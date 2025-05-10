@@ -6,50 +6,50 @@ import "slick-carousel/slick/slick-theme.css";
 const SejarahKaprog = () => {
   const items = [
     {
-      img: "/assets/Foto Kaprok/Kaprok1.jpg",
+      img: "/Foto Kaprok/Kaprok1.jpg",
       year: "2003-2004",
       event: "MEISYE YETI, s.Si, MT",
       detail: "Kepala Program RPL",
     },
     {
-      img: "/assets/Foto Kaprok/kaprok2.jpg",
+      img: "/Foto Kaprok/kaprok2.jpg",
       year: "2005-2006",
       event: "HERIYADI S.Kom",
       detail: "Kepala Program RPL",
     },
     {
-      img: "/assets/Foto Kaprok/Kaprok1.jpg",
+      img: "/Foto Kaprok/Kaprok1.jpg",
       year: "2006 - 2008",
       event: "MEISYE YETI, s.Si, MT",
       detail: "Kepala Program RPL",
     },
     {
-      img: "/assets/Foto Kaprok/kaprok3.jpg",
+      img: "/Foto Kaprok/kaprok3.jpg",
       year: "2008 - 2015",
       event: "HERI HERMAWAN, s.Kom",
       detail: "Kepala Program RPL",
     },
 
     {
-      img: "/assets/Foto Kaprok/kaprok4.jpg",
+      img: "/Foto Kaprok/kaprok4.jpg",
       year: "2016-2020",
       event: "HIKMAT DEVIYANA ST,M.M.Pd",
       detail: "Kepala Program RPL",
     },
     {
-      img: "/assets/Foto Kaprok/kaprok5.jpg",
+      img: "/Foto Kaprok/kaprok5.jpg",
       year: "2020 - 2022",
       event: "ALFI RAHMAN HAKIM s.Kom",
       detail: "Kepala Program RPL",
     },
     {
-      img: "/assets/Foto Kaprok/kaprok6.jpg",
+      img: "/Foto Kaprok/kaprok6.jpg",
       year: "2022 - 2024",
       event: "YULI DIANA, S.T",
       detail: "Kepala Program RPL",
     },
     {
-      img: "/assets/Foto Kaprok/kaprok5.jpg",
+      img: "/Foto Kaprok/kaprok5.jpg",
       year: "2024 - Saat Ini",
       event: "ALFI RAHMAN HAKIM",
       detail: "Kepala Program RPL",

@@ -84,4 +84,9 @@
   .card:hover h2 {
     /* Inset for h2 will be dynamically calculated in React */
     transition: inset 0.3s ease-out;
+  }@media (max-width: 768px) {
+    .achiev {
+      --slide-size: 100%; /* One slide per view on mobile */
+    }
   }
+  

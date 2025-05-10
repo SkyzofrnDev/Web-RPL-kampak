@@ -9,12 +9,18 @@ const CardAchievements = ({ title, desc, image }) => {
       setInsetValue(pHeight + 20);
     }
   };
+  const handleMouseLeave = () => {
+    setInsetValue(30); // nilai default
+  };
+  
 
     return (
-      <div
-      className="card"
-      onMouseEnter={handleMouseEnter}
-    >
+<div
+  className="card"
+  onMouseEnter={handleMouseEnter}
+  onMouseLeave={handleMouseLeave}
+>
+
       <img src={image} alt="dokumentasi" />
       <div className="card-content">
         <h2

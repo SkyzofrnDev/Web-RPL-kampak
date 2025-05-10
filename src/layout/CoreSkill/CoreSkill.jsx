@@ -4,32 +4,32 @@ const coreSkillsData = [
   {
     title: "IOT",
     description: "IoT merujuk pada jaringan objek fisik, seperti perangkat, kendaraan, dan bangunan, yang terhubung ke internet. Objek-objek ini dilengkapi dengan sensor, perangkat lunak, dan konektivitas internet, memungkinkan mereka untuk saling berkomunikasi dan bertindak secara mandiri.",
-    svgPath: "/assets/SvgCoreSkill/iot.svg"
+    svgPath: "/SvgCoreSkill/iot.svg"
   },
   {
     title: "DEVELOPER GAME",
     description: "Game developer (atau pengembang gim) adalah individu atau tim yang bertanggung jawab untuk menciptakan, merancang, dan mengembangkan permainan video.",
-    svgPath: "/assets/SvgCoreSkill/Game.svg"
+    svgPath: "/SvgCoreSkill/Game.svg"
   },
   {
     title: "WEB DEVELOPER",
     description: "Web developer adalah seorang programmer yang bertugas membuat dan mengembangkan website atau world wide web. Secara garis besar, tanggung jawab web developer adalah membangun sebuah website atau aplikasi dan memastikan performa website tetap optimal.",
-    svgPath: "/assets/SvgCoreSkill/Web.svg"
+    svgPath: "/SvgCoreSkill/Web.svg"
   },
   {
     title: "SCHEMA MASTERS",
     description: "Skema atau Database Schema adalah framework atau blueprint yang digunakan oleh para programmer untuk membangun dan menulis kode database.",
-    svgPath: "/assets/SvgCoreSkill/databse2.svg"
+    svgPath: "/SvgCoreSkill/databse2.svg"
   },
   {
     title: "DEVELOPER APP",
     description: "App development atau pengembangan aplikasi adalah proses pembuatan aplikasi untuk perangkat mobile, desktop, atau web. Dalam era digital yang modern, aplikasi mobile telah menjadi bagian integral dari kehidupan kita, memudahkan akses informasi, hiburan, dan solusi bisnis di ujung jari pengguna.",
-    svgPath: "/assets/SvgCoreSkill/aplikasi.svg"
+    svgPath: "/SvgCoreSkill/aplikasi.svg"
   },
   {
     title: "ANALYTIC SYSTEM",
     description: "Analisis sistem adalah teknik pemecahan masalah yang memecah sistem menjadi bagian-bagian komponen.",
-    svgPath: "/assets/SvgCoreSkill/Database.svg"
+    svgPath: "/SvgCoreSkill/Database.svg"
   }
 ];
 
