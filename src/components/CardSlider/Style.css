@@ -1,0 +1,87 @@
+.card {
+    width: 15rem;
+    height: 20rem;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    color: #f0f0f0;
+    box-shadow: 0 10px 30px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-out;
+  }
+  
+  .card img {
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.9;
+    transition: opacity 0.5s ease-out;
+  }
+  
+  .card h2 {
+    position: absolute;
+    inset: auto auto 30px 30px; /* Default inset before hover */
+    margin: 0;
+    transition: inset 0.3s ease-out;
+    text-transform: uppercase;
+    z-index: 2;
+  }
+  
+  .card p {
+    position: absolute;
+    inset: auto auto 15px 30px;
+    max-width: 80%;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    z-index: 2;
+  }
+  
+  .card a {
+    position: absolute;
+    inset: auto auto 40px 30px;
+    color: inherit;
+    text-decoration: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    z-index: 2;
+  }
+  
+  .card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 197, 147, 0) 0%,
+      rgba(0, 0, 0, 0.7) 79%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 1;
+  }
+  
+  .card:hover::before {
+    opacity: 1;
+  }
+  
+  .card:hover p,
+  .card:hover a {
+    opacity: 1;
+    transition: opacity 0.5s 0.1s ease-in;
+  }
+  
+  .card:hover img {
+    transition: opacity 0.3s ease-in;
+    opacity: 1;
+  }
+  
+  .card:hover h2 {
+    /* Inset for h2 will be dynamically calculated in React */
+    transition: inset 0.3s ease-out;
+  }

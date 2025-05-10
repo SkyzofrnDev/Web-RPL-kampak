@@ -1,0 +1,5 @@
+export {default as Herosection } from "./HeroSection/Herosection"
+export {default as About } from "./About/About"
+export {default as History } from "./History/History"
+export {default as VisiMission } from "./VisiMission/VisiMission"   
+export {default as WorkForce } from "./WorkForce/WorkForce"   
