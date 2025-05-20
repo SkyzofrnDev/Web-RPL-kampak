@@ -44,7 +44,6 @@ const Achievement = () => {
     deltaX.current = 0;
   };
 
-  // Set cardsPerView based on screen width
   const updateCardsPerView = () => {
     const width = window.innerWidth;
     if (width > 1390) {
@@ -64,7 +63,7 @@ const Achievement = () => {
 
   useEffect(() => {
     if (current > data.length - cardsPerView) {
-      setCurrent(0); // Reset ke 0 biar tidak overflow
+      setCurrent(0); 
     }
   }, [cardsPerView]);
 
