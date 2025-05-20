@@ -46,9 +46,9 @@ const Card = ({ title, description, svgPath }) => (
 const CoreSkill = () => {
   return (
     <div className="pt-20 lg:pt-36 px-6 bg-[#272727] text-white text-center md:p-16">
-      <p className="font-bold text-3xl mb-5 md:mb-10">Core Skills</p>
+      <p className="font-bold text-3xl mb-5 md:mb-10">Belajar Apa Saja Kita Dalam 2.5 Tahun?</p>
       <p className="font-medium text-sm mb-10 md:text-lg md:mb-16">
-        Beranjak ke tahap selanjutnya yaitu Core Skills, Core Skills ini akan
+        Beranjak ke tahap selanjutnya yaitu Core Skill, Skill Khusus ini akan
         dipelajari di tahun ke 2.5 masa belajar, berbeda dengan basic skills
         yang mempelajari hal dasar, tahap core skills ini merupakan tahap
         penting dimana kita akan belajar hal-hal yang akan dibutuhkan di dunia

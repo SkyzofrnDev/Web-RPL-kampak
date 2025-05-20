@@ -1,5 +1,5 @@
 import React from 'react'
-import { About, CoreSkill, Herosection, History, VisiMission, WorkForce } from '../../layout'
+import { About, CoreSkill, Herosection, History, Partnership, VisiMission, WorkForce } from '../../layout'
 import Achievements from '../../layout/Achievement/Achievement'
 
 const Home = () => {
@@ -12,6 +12,7 @@ const Home = () => {
         <Achievements/>
         <CoreSkill/>
         <WorkForce/>
+        <Partnership/>
     </div>
   )
 }
