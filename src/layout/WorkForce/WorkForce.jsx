@@ -4,7 +4,7 @@ import { CardWorkForce } from "../../components/Index";
 const data = Array(6).fill({
   name: "ALFI RAHMAN HAKIM, S.Kom",
   title: "Kepala Program Jurusan Rekayasa Perangkat Lunak",
-  nip: "198302062023211000"
+  nip: "198302062023211000",
 });
 
 const WorkForce = () => {
@@ -22,16 +22,24 @@ const WorkForce = () => {
   };
 
   return (
-    <div className="bg-gray-900 py-10 text-white text-center">
-      <h2 className="text-xl font-bold mb-1">TENAGA KERJA</h2>
-      <h3 className="text-2xl font-extrabold mb-6">REKAYASA PERANGKAT LUNAK</h3>
+    <div className="bg-[#272727] pt-20">
+      <div className="text-center font-bold text-white text-3xl lg:text-4xl mb-28">
+        <p>TENAGA KERJA</p>
+        <p>REKAYASA PERANGKAT LUNAK</p>
+      </div>
 
       <div className="flex items-center justify-center gap-4">
         {/* Left Button */}
         <button onClick={prev}>
           <svg width="65" height="65" viewBox="0 0 65 65" fill="none">
             <circle cx="32.5" cy="32.5" r="31" stroke="white" strokeWidth="3" />
-            <path d="M36.6071 21L25 33L36.6071 45" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+            <path
+              d="M36.6071 21L25 33L36.6071 45"
+              stroke="white"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </button>
 
@@ -54,23 +62,40 @@ const WorkForce = () => {
 
         {/* Right Button */}
         <button onClick={next}>
-          <svg width="65" height="65" viewBox="0 0 65 65" fill="none" style={{ transform: "rotate(180deg)" }}>
+          <svg
+            width="65"
+            height="65"
+            viewBox="0 0 65 65"
+            fill="none"
+            style={{ transform: "rotate(180deg)" }}
+          >
             <circle cx="32.5" cy="32.5" r="31" stroke="white" strokeWidth="3" />
-            <path d="M36.6071 21L25 33L36.6071 45" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+            <path
+              d="M36.6071 21L25 33L36.6071 45"
+              stroke="white"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </button>
       </div>
 
       {/* Dots */}
       <div className="flex justify-center mt-6 gap-2">
-        {Array(maxIndex + 1).fill().map((_, i) => (
-          <div
-            key={i}
-            onClick={() => setCurrent(i)}
-            className={`w-2 h-2 rounded-full cursor-pointer ${i === current ? "bg-white" : "bg-gray-500"}`}
-          />
-        ))}
+        {Array(maxIndex + 1)
+          .fill()
+          .map((_, i) => (
+            <div
+              key={i}
+              onClick={() => setCurrent(i)}
+              className={`w-2 h-2 rounded-full cursor-pointer ${
+                i === current ? "bg-white" : "bg-gray-500"
+              }`}
+            />
+          ))}
       </div>
+      <img src="/Svg/Anim2LD.svg" alt="" srcset="" />
     </div>
   );
 };
