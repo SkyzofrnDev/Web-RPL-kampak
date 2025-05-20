@@ -9,15 +9,18 @@ const data = Array(6).fill({
 });
 
 const Achievement = () => {
-  const cardsPerView = 3;
   const cardWidth = 400;
   const gap = 32;
-  const maxIndex = data.length - cardsPerView;
+
+  const [cardsPerView, setCardsPerView] = useState(3);
   const [current, setCurrent] = useState(0);
+
+  const maxIndex = Math.max(data.length - cardsPerView, 0);
 
   const startX = useRef(0);
   const isDragging = useRef(false);
   const deltaX = useRef(0);
+
   const handleStart = (x) => {
     startX.current = x;
     isDragging.current = true;
@@ -41,9 +44,29 @@ const Achievement = () => {
     deltaX.current = 0;
   };
 
+  // Set cardsPerView based on screen width
+  const updateCardsPerView = () => {
+    const width = window.innerWidth;
+    if (width > 1390) {
+      setCardsPerView(3);
+    } else if (width >= 1072) {
+      setCardsPerView(2);
+    } else {
+      setCardsPerView(1);
+    }
+  };
+
   useEffect(() => {
-    if (data.length <= cardsPerView) setCurrent(0);
-  }, [data]);
+    updateCardsPerView();
+    window.addEventListener("resize", updateCardsPerView);
+    return () => window.removeEventListener("resize", updateCardsPerView);
+  }, []);
+
+  useEffect(() => {
+    if (current > data.length - cardsPerView) {
+      setCurrent(0); // Reset ke 0 biar tidak overflow
+    }
+  }, [cardsPerView]);
 
   return (
     <div>
