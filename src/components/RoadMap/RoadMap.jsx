@@ -1,20 +1,7 @@
 import React from "react";
 
-const journeyData = [
-    {
-      "image": "/path/to/image1.svg",
-      "desc": "Description for the first journey entry."
-    },
-    {
-      "image": "/path/to/image2.svg",
-      "desc": "Description for the second journey entry."
-    },
-    {
-      "image": "/path/to/image3.svg",
-      "desc": "Description for the third journey entry."
-    }
-  ]
-const RoadMap = () => {
+
+const RoadMap = ({ data }) => {
   return (
     <div className="flex pt-56 flex-col items-center w-full justify-center bg-[#272727] text-white py-12 select-none">
       <div className="text-center">
@@ -26,7 +13,7 @@ const RoadMap = () => {
         </p>
       </div>
       <div className="w-full px-56 mt-20">
-        {journeyData.map((entry, index) => (
+        {data.map((entry, index) => (
           <div
             key={index}
             className={`flex mt-10 items-stretch justify-between ${
@@ -42,7 +29,7 @@ const RoadMap = () => {
             </div>
             <div className="w-1/3 flex flex-col items-center  px-4">
               <div className="p-3 rounded-full bg-white"></div>
-              {index !== journeyData.length - 1 && (
+              {index !== data.length - 1 && (
                 <div className="w-0.5 h-[280px] bg-white"></div>
               )}
             </div>
