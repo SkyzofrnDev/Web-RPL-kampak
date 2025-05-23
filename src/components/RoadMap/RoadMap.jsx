@@ -1,13 +1,14 @@
-import React from "react";
+import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
 const RoadMap = ({ data }) => {
-  AOS.init({
-  duration: 6000,
-  once: true,
-  offset: 200, // Atur offset sesuai kebutuhan
-});
+  useEffect(() => {
+    AOS.init({
+      duration: 5000, 
+      once: true,
+    });
+  }, []);
   return (
     <div className="flex  flex-col items-center w-full justify-center bg-[#272727] text-white py-12 select-none">
       <div className="w-full px-56 mt-20">
@@ -19,8 +20,7 @@ const RoadMap = ({ data }) => {
             }`}
           >
             <div
-              data-aos="fade-up"
-              data-aos-duration="5000"
+              data-aos="fade-up"  
               className="w-1/3 flex items-center justify-center px-4"
             >
               <img
@@ -31,7 +31,6 @@ const RoadMap = ({ data }) => {
             </div>
             <div
               data-aos="fade-up"
-              data-aos-duration="3000"
               className="w-1/3 flex flex-col items-center  px-4"
             >
               <div className="p-3 rounded-full bg-white"></div>
@@ -41,7 +40,6 @@ const RoadMap = ({ data }) => {
             </div>
             <div
               data-aos="fade-up"
-              data-aos-duration="6000"
               className="w-1/3 flex   px-4 h-[280px]"
             >
               <p className="radio text-xl max-w-md">{entry.desc}</p>
