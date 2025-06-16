@@ -6,11 +6,12 @@ const images = ["/RplBuilding/1.png", "/RplBuilding/2.png"];
 const Herosection = () => {
   const [isFirstImage, setIsFirstImage] = useState(true);
 
+ 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIsFirstImage((prev) => !prev);
+      setIsFirstImage((prev) => !prev); 
     }, 5000);
-    return () => clearInterval(interval);
+    return () => clearInterval(interval); 
   }, []);
 
   return (
@@ -18,19 +19,21 @@ const Herosection = () => {
       className="h-[100vh] md:h-[110vh] hero-container relative w-full xl:h-[110vh] overflow-hidden"
       id="#"
     >
+    
       <div
         className="w-full h-full relative"
         style={{
-          WebkitMaskImage: "url('/RplBuilding/Union-Home.svg')",
-          maskImage: "url('/RplBuilding/Union-Home.svg')",
-          WebkitMaskSize: "cover",
-          maskSize: "cover",
-          WebkitMaskRepeat: "no-repeat",
+          WebkitMaskImage: "url('/RplBuilding/Union-Home.svg')", // Path to SVG
+          maskImage: "url('/RplBuilding/Union-Home.svg')", // Path to SVG
+          WebkitMaskSize: "cover", // Menggunakan cover agar mask penuh
+          maskSize: "cover", // Menggunakan cover agar mask penuh
+          WebkitMaskRepeat: "no-repeat", // Prevent repeat
           maskRepeat: "no-repeat",
-          WebkitMaskPosition: "center",
+          WebkitMaskPosition: "center", // Center mask
           maskPosition: "center",
         }}
       >
+        {/* First Image */}
         <div
           className={`brightness-50 absolute inset-0 transition-opacity duration-1000 ${
             isFirstImage ? "opacity-100" : "opacity-0"
@@ -40,6 +43,7 @@ const Herosection = () => {
           }}
         ></div>
 
+        {/* Second Image */}
         <div
           className={`brightness-50 absolute inset-0 transition-opacity duration-1000 ${
             isFirstImage ? "opacity-0" : "opacity-100"
@@ -50,7 +54,8 @@ const Herosection = () => {
         ></div>
       </div>
 
-      <div className="absolute top-[52%] transform -translate-y-1/2 left-30 h-[35%]">
+      {/* Overlay Content */}
+      <div className="absolute top-[52%] transform -translate-y-1/2 left-10 h-[35%]">
         <div className="h-[100%] content-between xl:h-full grid">
           <h1 className="text-xl leading-relaxed md:text-2xl  lg:leading-relaxed xl:leading-relaxed md:leading-relaxed  max-w-[90%] lg:max-w-[70%] lg:text-3xl font-semibold xl:text-4xl min-h-28 xl:max-w-[650px]  text-white">
             <TypeAnimation
@@ -76,9 +81,11 @@ const Herosection = () => {
               repeat={Infinity}
             />
           </h1>
+
+          {/* Button */}
           <div className="items-end">
-            <a href="#identity" className="ml-3">
-              <ButtonWhite text="Selanjutnya"/>
+            <a href="#identity">
+              <ButtonWhite text="Selanjutnya" />
             </a>
           </div>
         </div>
