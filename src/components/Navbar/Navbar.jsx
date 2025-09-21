@@ -21,36 +21,45 @@ const Navbar = () => {
       "achivments",
       "core-skill",
       "technology",
-      "alumni",
       "workforce",
       "partnership",
     ];
     const scrollPosition = window.scrollY;
 
+    // Handle navbar visibility based on scroll direction
+    if (window.scrollY > lastScrollY && window.scrollY > 100) {
+      setNavbarVisible(false);
+    } else {
+      setNavbarVisible(true);
+    }
+
+    // Close mobile menu on scroll
+    if (isMenuOpen && window.innerWidth <= 1024) {
+      setMenuOpen(false);
+    }
+
+    // Detect current section
+    let currentSectionFound = "home"; // default to home
+    
     sections.forEach((section) => {
       const sectionElement = document.getElementById(section);
       if (sectionElement) {
-        const sectionTop = sectionElement.offsetTop;
+        const sectionTop = sectionElement.offsetTop - 100; // Add offset for navbar height
         const sectionHeight = sectionElement.offsetHeight;
 
-        if (
-          scrollPosition >= sectionTop &&
-          scrollPosition < sectionTop + sectionHeight
-        ) {
-          setCurrentSection(section);
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+          currentSectionFound = section;
         }
       }
-      if (window.scrollY > lastScrollY) {
-        setNavbarVisible(false);
-      } else {
-        setNavbarVisible(true);
-      }
-
-      if (isMenuOpen && window.innerWidth <= 1024) {
-        setMenuOpen(false);
-      }
-      setLastScrollY(window.scrollY);
     });
+
+    // Special case for when we're at the very top
+    if (scrollPosition < 50) {
+      currentSectionFound = "home";
+    }
+
+    setCurrentSection(currentSectionFound);
+    setLastScrollY(window.scrollY);
   };
 
   useEffect(() => {
@@ -71,6 +80,20 @@ const Navbar = () => {
 
   const handleToggleMenu = () => {
     setMenuOpen(!isMenuOpen);
+  };
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+    // Close mobile menu after navigation
+    if (isMenuOpen) {
+      setMenuOpen(false);
+    }
   };
 
   const animateDropdownIn = () => {
@@ -172,115 +195,96 @@ const Navbar = () => {
 
           <div className="flex lg:ml-28 lg:justify-center lg:w-full">
             <ul className="navbar w-full flex justify-between gap-x-5 list-none poppins-medium text-[#ffff] lg:text-lg font-semibold">
-              <Link to={"/"}>
-                <li
-                  className={`${
-                    currentSection === "home"
-                      ? "font-bold text-[#272727] underline"
-                      : ""
-                  }`}
-                  onClick={() => handleScroll("home")}
-                >
-                  HOME
-                </li>
-              </Link>
-              <a href="#identity">
-                <li
-                  className={`${
-                    currentSection === "identity"
-                      ? "font-bold text-[#272727] underline"
-                      : ""
-                  }`}
-                  onClick={() => handleScroll("identity")}
-                >
-                  IDENTITY
-                </li>
-              </a>
-              <a href="#history">
-                <li
-                  className={`${
-                    currentSection === "history"
-                      ? "font-bold text-[#272727] underline"
-                      : ""
-                  }`}
-                  onClick={() => handleScroll("history")}
-                >
-                  HISTORY
-                </li>
-              </a>
-              <a href="#visi-misi">
-                <li
-                  className={`${
-                    currentSection === "visi-misi"
-                      ? "font-bold text-[#272727] underline"
-                      : ""
-                  }`}
-                  onClick={() => handleScroll("visi-misi")}
-                >
-                  VISI MISI
-                </li>
-              </a>
-              <a href="#achivments">
-                <li
-                  className={`${
-                    currentSection === "achivments"
-                      ? "font-bold text-[#272727] underline"
-                      : ""
-                  }`}
-                  onClick={() => handleScroll("achivments")}
-                >
-                  ACHIVMENTS
-                </li>
-              </a>
-              <a href="#core-skill">
-                <li
-                  className={`${
-                    currentSection === "core-skill"
-                      ? "font-bold text-[#272727] underline"
-                      : ""
-                  }`}
-                  onClick={() => handleScroll("core-skill")}
-                >
-                  CORE SKILL
-                </li>
-              </a>
-              <a href="#technology">
-                <li
-                  className={`${
-                    currentSection === "technology"
-                      ? "font-bold text-[#272727] underline"
-                      : ""
-                  }`}
-                  onClick={() => handleScroll("technology")}
-                >
-                  TECHNOLOGY
-                </li>
-              </a>
-              <a href="#workforce">
-                <li
-                  className={`${
-                    currentSection === "workforce"
-                      ? "font-bold text-[#272727] underline"
-                      : ""
-                  }`}
-                  onClick={() => handleScroll("workforce")}
-                >
-                  WORKFORCE
-                </li>
-              </a>
-              <a href="#partnership">
-                <li
-                  className={`${
-                    currentSection === "partnership"
-                      ? "font-bold text-[#272727] underline"
-                      : ""
-                  }`}
-                  onClick={() => handleScroll("partnership")}
-                >
-                  PARTNERSHIP
-                </li>
-                
-              </a>
+              <li
+                className={`cursor-pointer ${
+                  currentSection === "home"
+                    ? "font-bold text-[#272727] underline"
+                    : ""
+                }`}
+                onClick={() => scrollToSection("home")}
+              >
+                HOME
+              </li>
+              <li
+                className={`cursor-pointer ${
+                  currentSection === "identity"
+                    ? "font-bold text-[#272727] underline"
+                    : ""
+                }`}
+                onClick={() => scrollToSection("identity")}
+              >
+                IDENTITY
+              </li>
+              <li
+                className={`cursor-pointer ${
+                  currentSection === "history"
+                    ? "font-bold text-[#272727] underline"
+                    : ""
+                }`}
+                onClick={() => scrollToSection("history")}
+              >
+                HISTORY
+              </li>
+              <li
+                className={`cursor-pointer ${
+                  currentSection === "visi-misi"
+                    ? "font-bold text-[#272727] underline"
+                    : ""
+                }`}
+                onClick={() => scrollToSection("visi-misi")}
+              >
+                VISI MISI
+              </li>
+              <li
+                className={`cursor-pointer ${
+                  currentSection === "achivments"
+                    ? "font-bold text-[#272727] underline"
+                    : ""
+                }`}
+                onClick={() => scrollToSection("achivments")}
+              >
+                ACHIVMENTS
+              </li>
+              <li
+                className={`cursor-pointer ${
+                  currentSection === "technology"
+                    ? "font-bold text-[#272727] underline"
+                    : ""
+                }`}
+                onClick={() => scrollToSection("technology")}
+              >
+                SILABUS
+              </li>
+              <li
+                className={`cursor-pointer ${
+                  currentSection === "core-skill"
+                    ? "font-bold text-[#272727] underline"
+                    : ""
+                }`}
+                onClick={() => scrollToSection("core-skill")}
+              >
+                CORE SKILL
+              </li>
+              <li
+                className={`cursor-pointer ${
+                  currentSection === "workforce"
+                    ? "font-bold text-[#272727] underline"
+                    : ""
+                }`}
+                onClick={() => scrollToSection("workforce")}
+              >
+                WORKFORCE
+              </li>
+              <li
+                className={`cursor-pointer ${
+                  currentSection === "partnership"
+                    ? "font-bold text-[#272727] underline"
+                    : ""
+                }`}
+                onClick={() => scrollToSection("partnership")}
+              >
+                PARTNERSHIP
+              </li>
 
             </ul>
           </div>
@@ -331,67 +335,78 @@ const Navbar = () => {
         {isMenuOpen && (
           <div className="w-[40%] mx-2 lg:hidden bg-[#b2b2b2ef]/70 backdrop-blur-[3px] rounded-xl p-4 mt-2 transition-transform duration-300">
             <ul className="navbar flex flex-col gap-y-2 text-[#272727] font-semibold poppins-medium text-sm">
-              <Link to={"/#"}>
-                <li
-                  className={`${
-                    currentSection === "home" ? "font-bold" : ""
-                  } outline outline-1 outline-[#272727] rounded-md p-2`}
-                  onClick={() => handleScroll("home")}
-                >
-                  HOME
-                </li>
-              </Link>
-              <a href="#identity">
-                <li
-                  className={`${
-                    currentSection === "identity" ? "font-bold" : ""
-                  } outline outline-1 outline-[#272727] rounded-md p-2`}
-                  onClick={() => handleScroll("identity")}
-                >
-                  IDENTITY
-                </li>
-              </a>
-              <a href="#history">
-                <li
-                  className={`${
-                    currentSection === "history" ? "font-bold" : ""
-                  } outline outline-1 outline-[#272727] rounded-md p-2`}
-                  onClick={() => handleScroll("history")}
-                >
-                  HISTORY
-                </li>
-              </a>
-              <a href="#achivments">
-                <li
-                  className={`${
-                    currentSection === "achivments" ? "font-bold" : ""
-                  } outline outline-1 outline-[#272727] rounded-md p-2`}
-                  onClick={() => handleScroll("achivments")}
-                >
-                  ACHIEVMENTS
-                </li>
-              </a>
-              <a href="#core-skill">
-                <li
-                  className={`${
-                    currentSection === "core-skill" ? "font-bold" : ""
-                  } outline outline-1 outline-[#272727] rounded-md p-2`}
-                  onClick={() => handleScroll("core-skill")}
-                >
-                  CORE SKILL
-                </li>
-              </a>
-              <a href="#workforce">
-                <li
-                  className={`${
-                    currentSection === "workforce" ? "font-bold" : ""
-                  } outline outline-1 outline-[#272727] rounded-md p-2`}
-                  onClick={() => handleScroll("workforce")}
-                >
-                  WORKFORCE
-                </li>
-              </a>
-
+              <li
+                className={`cursor-pointer ${
+                  currentSection === "home" ? "font-bold" : ""
+                } outline-1 outline-[#272727] rounded-md p-2`}
+                onClick={() => scrollToSection("home")}
+              >
+                HOME
+              </li>
+              <li
+                className={`cursor-pointer ${
+                  currentSection === "identity" ? "font-bold" : ""
+                } outline-1 outline-[#272727] rounded-md p-2`}
+                onClick={() => scrollToSection("identity")}
+              >
+                IDENTITY
+              </li>
+              <li
+                className={`cursor-pointer ${
+                  currentSection === "history" ? "font-bold" : ""
+                } outline-1 outline-[#272727] rounded-md p-2`}
+                onClick={() => scrollToSection("history")}
+              >
+                HISTORY
+              </li>
+              <li
+                className={`cursor-pointer ${
+                  currentSection === "visi-misi" ? "font-bold" : ""
+                } outline-1 outline-[#272727] rounded-md p-2`}
+                onClick={() => scrollToSection("visi-misi")}
+              >
+                VISI MISI
+              </li>
+              <li
+                className={`cursor-pointer ${
+                  currentSection === "achivments" ? "font-bold" : ""
+                } outline-1 outline-[#272727] rounded-md p-2`}
+                onClick={() => scrollToSection("achivments")}
+              >
+                ACHIVMENTS
+              </li>
+              <li
+                className={`cursor-pointer ${
+                  currentSection === "technology" ? "font-bold" : ""
+                } outline-1 outline-[#272727] rounded-md p-2`}
+                onClick={() => scrollToSection("technology")}
+              >
+                TECHNOLOGY
+              </li>
+              <li
+                className={`cursor-pointer ${
+                  currentSection === "core-skill" ? "font-bold" : ""
+                } outline-1 outline-[#272727] rounded-md p-2`}
+                onClick={() => scrollToSection("core-skill")}
+              >
+                CORE SKILL
+              </li>
+              <li
+                className={`cursor-pointer ${
+                  currentSection === "workforce" ? "font-bold" : ""
+                } outline-1 outline-[#272727] rounded-md p-2`}
+                onClick={() => scrollToSection("workforce")}
+              >
+                WORKFORCE
+              </li>
+              <li
+                className={`cursor-pointer ${
+                  currentSection === "partnership" ? "font-bold" : ""
+                } outline-1 outline-[#272727] rounded-md p-2`}
+                onClick={() => scrollToSection("partnership")}
+              >
+                PARTNERSHIP
+              </li>
             </ul>
           </div>
         )}
@@ -401,3 +416,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
