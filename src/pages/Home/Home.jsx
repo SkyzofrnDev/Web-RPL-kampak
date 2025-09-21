@@ -5,15 +5,33 @@ import Achievements from '../../layout/Achievement/Achievement'
 const Home = () => {
   return (
     <div>
-        <Herosection/>
-        <About/>
-        <History/>
-        <VisiMission/>
-        <Achievements/>
-        <RoadMapClass/>
-        <CoreSkill/>
-        <WorkForce/>
-        <Partnership/>
+        <div id="home">
+          <Herosection/>
+        </div>
+        <div id="identity">
+          <About/>
+        </div>
+        <div id="history">
+          <History/>
+        </div>
+        <div id="visi-misi">
+          <VisiMission/>
+        </div>
+        <div id="achivments">
+          <Achievements/>
+        </div>
+        <div id="technology">
+          <RoadMapClass/>
+        </div>
+        <div id="core-skill">
+          <CoreSkill/>
+        </div>
+        <div id="workforce">
+          <WorkForce/>
+        </div>
+        <div id="partnership">
+          <Partnership/>
+        </div>
     </div>
   )
 }

@@ -1,19 +1,15 @@
 import { useState, useRef, useEffect } from "react";
 import { CardAchievements } from "../../components/Index";
 
-const data = Array(6).fill({
-  name: "ALFI RAHMAN HAKIM, S.Kom",
-  title: "Juara",
-  desc: "Juara tingkat nasional bidang teknologi",
-  nip: "198302062023211000",
-});
-
 const Achievement = () => {
   const cardWidth = 400;
   const gap = 32;
 
   const [cardsPerView, setCardsPerView] = useState(3);
   const [current, setCurrent] = useState(0);
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const maxIndex = Math.max(data.length - cardsPerView, 0);
 
@@ -55,6 +51,38 @@ const Achievement = () => {
     }
   };
 
+  // Fetch data from API
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch('http://127.0.0.1:8000/api/juara');
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        const apiData = await response.json();
+        
+        // Transform API data to match component structure
+        const transformedData = apiData.map(item => ({
+          title: item.judul,
+          desc: item.deskripsi,
+          image: `http://127.0.0.1:8000/storage/${item.juara_img}`,
+          link: item.link
+        }));
+        
+        setData(transformedData);
+        setError(null);
+      } catch (err) {
+        setError(err.message);
+        console.error('Error fetching achievements:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   useEffect(() => {
     updateCardsPerView();
     window.addEventListener("resize", updateCardsPerView);
@@ -66,6 +94,60 @@ const Achievement = () => {
       setCurrent(0); 
     }
   }, [cardsPerView]);
+
+  // Show loading state
+  if (loading) {
+    return (
+      <div>
+        <img src="/Svg/Anim1LU.svg" alt="" className="" />
+        <div className="flex flex-col items-center justify-center bg-[#272727] text-white py-12 select-none">
+          <div className="text-center mb-10">
+            <h1 className="text-xl font-medium mb-2">Album Prestasi Siswa</h1>
+            <h2 className="text-3xl font-semibold">Our Achievements</h2>
+          </div>
+          <div className="text-center">
+            <p className="text-lg">Loading achievements...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Show error state
+  if (error) {
+    return (
+      <div>
+        <img src="/Svg/Anim1LU.svg" alt="" className="" />
+        <div className="flex flex-col items-center justify-center bg-[#272727] text-white py-12 select-none">
+          <div className="text-center mb-10">
+            <h1 className="text-xl font-medium mb-2">Album Prestasi Siswa</h1>
+            <h2 className="text-3xl font-semibold">Our Achievements</h2>
+          </div>
+          <div className="text-center">
+            <p className="text-lg text-red-400">Error loading achievements: {error}</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Show empty state if no data
+  if (data.length === 0) {
+    return (
+      <div>
+        <img src="/Svg/Anim1LU.svg" alt="" className="" />
+        <div className="flex flex-col items-center justify-center bg-[#272727] text-white py-12 select-none">
+          <div className="text-center mb-10">
+            <h1 className="text-xl font-medium mb-2">Album Prestasi Siswa</h1>
+            <h2 className="text-3xl font-semibold">Our Achievements</h2>
+          </div>
+          <div className="text-center">
+            <p className="text-lg">No achievements available at the moment.</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div>

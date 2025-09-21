@@ -1,17 +1,54 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CardWorkForce } from "../../components/Index";
 
-const data = Array(6).fill({
-  name: "ALFI RAHMAN HAKIM, S.Kom",
-  title: "Kepala Program Jurusan Rekayasa Perangkat Lunak",
-  nip: "198302062023211000",
-});
-
 const WorkForce = () => {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  
   const cardsPerView = 3;
   const cardWidth = 400; // px, sesuaikan dengan ukuran asli card kamu
-  const maxIndex = data.length - cardsPerView;
+  const maxIndex = Math.max(data.length - cardsPerView, 0);
   const [current, setCurrent] = useState(0);
+
+  // Fetch data from API
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch('http://127.0.0.1:8000/api/tenagakerja');
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        const apiData = await response.json();
+        
+        // Transform API data to match component structure
+        const transformedData = apiData.map(item => ({
+          name: item.nama,
+          title: item.role,
+          nip: item.nip,
+          image: `http://127.0.0.1:8000/storage/${item.naker_img}`
+        }));
+        
+        setData(transformedData);
+        setError(null);
+      } catch (err) {
+        setError(err.message);
+        console.error('Error fetching Tenaga Kerja data:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // Reset current position when data changes
+  useEffect(() => {
+    if (current > maxIndex) {
+      setCurrent(0);
+    }
+  }, [data.length, current, maxIndex]);
 
   const prev = () => {
     setCurrent((prev) => (prev === 0 ? maxIndex : prev - 1));
@@ -20,6 +57,60 @@ const WorkForce = () => {
   const next = () => {
     setCurrent((prev) => (prev === maxIndex ? 0 : prev + 1));
   };
+
+  // Show loading state
+  if (loading) {
+    return (
+      <div>
+        <div className="bg-[#272727] pt-20">
+          <div className="text-center font-bold text-white text-3xl lg:text-4xl mb-28">
+            <p>TENAGA KERJA</p>
+            <p>REKAYASA PERANGKAT LUNAK</p>
+          </div>
+          <div className="text-center py-20">
+            <p className="text-white text-lg">Loading data tenaga kerja...</p>
+          </div>
+        </div>
+        <img src="/Svg/Anim2LD.svg" alt="" srcset="" />
+      </div>
+    );
+  }
+
+  // Show error state
+  if (error) {
+    return (
+      <div>
+        <div className="bg-[#272727] pt-20">
+          <div className="text-center font-bold text-white text-3xl lg:text-4xl mb-28">
+            <p>TENAGA KERJA</p>
+            <p>REKAYASA PERANGKAT LUNAK</p>
+          </div>
+          <div className="text-center py-20">
+            <p className="text-red-400 text-lg">Error loading data: {error}</p>
+          </div>
+        </div>
+        <img src="/Svg/Anim2LD.svg" alt="" srcset="" />
+      </div>
+    );
+  }
+
+  // Show empty state if no data
+  if (data.length === 0) {
+    return (
+      <div>
+        <div className="bg-[#272727] pt-20">
+          <div className="text-center font-bold text-white text-3xl lg:text-4xl mb-28">
+            <p>TENAGA KERJA</p>
+            <p>REKAYASA PERANGKAT LUNAK</p>
+          </div>
+          <div className="text-center py-20">
+            <p className="text-white text-lg">Tidak ada data tenaga kerja tersedia.</p>
+          </div>
+        </div>
+        <img src="/Svg/Anim2LD.svg" alt="" srcset="" />
+      </div>
+    );
+  }
 
   return (
     <div>

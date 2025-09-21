@@ -1,60 +1,44 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const SejarahKaprog = () => {
-  const items = [
-    {
-      img: "/Foto Kaprok/Kaprok1.jpg",
-      year: "2003-2004",
-      event: "MEISYE YETI, s.Si, MT",
-      detail: "Kepala Program RPL",
-    },
-    {
-      img: "/Foto Kaprok/kaprok2.jpg",
-      year: "2005-2006",
-      event: "HERIYADI S.Kom",
-      detail: "Kepala Program RPL",
-    },
-    {
-      img: "/Foto Kaprok/Kaprok1.jpg",
-      year: "2006 - 2008",
-      event: "MEISYE YETI, s.Si, MT",
-      detail: "Kepala Program RPL",
-    },
-    {
-      img: "/Foto Kaprok/kaprok3.jpg",
-      year: "2008 - 2015",
-      event: "HERI HERMAWAN, s.Kom",
-      detail: "Kepala Program RPL",
-    },
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    {
-      img: "/Foto Kaprok/kaprok4.jpg",
-      year: "2016-2020",
-      event: "HIKMAT DEVIYANA ST,M.M.Pd",
-      detail: "Kepala Program RPL",
-    },
-    {
-      img: "/Foto Kaprok/kaprok5.jpg",
-      year: "2020 - 2022",
-      event: "ALFI RAHMAN HAKIM s.Kom",
-      detail: "Kepala Program RPL",
-    },
-    {
-      img: "/Foto Kaprok/kaprok6.jpg",
-      year: "2022 - 2024",
-      event: "YULI DIANA, S.T",
-      detail: "Kepala Program RPL",
-    },
-    {
-      img: "/Foto Kaprok/kaprok5.jpg",
-      year: "2024 - Saat Ini",
-      event: "ALFI RAHMAN HAKIM",
-      detail: "Kepala Program RPL",
-    },
-  ];
+  // Fetch data from API
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch('http://127.0.0.1:8000/api/kaprog');
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        const apiData = await response.json();
+        
+        // Transform API data to match component structure
+        const transformedData = apiData.map(item => ({
+          img: `http://127.0.0.1:8000/storage/${item.kaprog_img}`,
+          year: item.masa_jabatan,
+          event: item.nama,
+          detail: "Kepala Program RPL"
+        }));
+        
+        setItems(transformedData);
+        setError(null);
+      } catch (err) {
+        setError(err.message);
+        console.error('Error fetching Kaprog data:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const settings = {
     infinite: false,
@@ -80,6 +64,54 @@ const SejarahKaprog = () => {
     ],
   };
 
+  // Show loading state
+  if (loading) {
+    return (
+      <div className="bg-[#272727] text-white font-poppins pt-10 pb-10 xl:pb-0">
+        <div className="text-center my-10">
+          <p className="text-2xl xl:text-3xl font-bold">Sejarah Kepala Program</p>
+        </div>
+        <div className="max-w-7xl mx-auto px-10 xl:px-5">
+          <div className="text-center py-20">
+            <p className="text-lg">Loading data Kepala Program...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Show error state
+  if (error) {
+    return (
+      <div className="bg-[#272727] text-white font-poppins pt-10 pb-10 xl:pb-0">
+        <div className="text-center my-10">
+          <p className="text-2xl xl:text-3xl font-bold">Sejarah Kepala Program</p>
+        </div>
+        <div className="max-w-7xl mx-auto px-10 xl:px-5">
+          <div className="text-center py-20">
+            <p className="text-lg text-red-400">Error loading data: {error}</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Show empty state if no data
+  if (items.length === 0) {
+    return (
+      <div className="bg-[#272727] text-white font-poppins pt-10 pb-10 xl:pb-0">
+        <div className="text-center my-10">
+          <p className="text-2xl xl:text-3xl font-bold">Sejarah Kepala Program</p>
+        </div>
+        <div className="max-w-7xl mx-auto px-10 xl:px-5">
+          <div className="text-center py-20">
+            <p className="text-lg">Tidak ada data Kepala Program tersedia.</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-[#272727] text-white font-poppins pt-10 pb-10 xl:pb-0">
       <div className="text-center my-10">
@@ -96,7 +128,7 @@ const SejarahKaprog = () => {
                 <div className="mb-6">
                   <img
                     src={item.img}
-                    alt=""
+                    alt={item.event}
                     className="rounded-[5%] w-[158px] h-[192px]"
                   />
                 </div>

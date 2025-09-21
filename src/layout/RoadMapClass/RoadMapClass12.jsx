@@ -19,10 +19,10 @@ const RoadMapClass12 = () => {
     <div className="pt-56 bg-[#272727] text-white py-12 select-none">
       <div className="text-center">
         <p className="text-4xl font-semibold">
-          Mata Pelajaran Jurusan Selama Kelas 11
+          Mata Pelajaran Jurusan Selama Kelas 12
         </p>
         <p className="text-xl mt-2">
-          Apa saja yang kita pelajari selama 1 tahun di kelas 11?
+          Apa saja yang kita pelajari selama 6 Bulan di kelas 12?
         </p>
       </div>
       <RoadMap data={journeyData} />
