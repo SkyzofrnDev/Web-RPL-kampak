@@ -2,82 +2,82 @@ import React from "react";
 
 const PartnershipContent = [
   {
-    image: "/assets/PartnershipLogo/SunStar.png",
+    image: "/PartnershipLogo/SunStar.png",
     name: "PT. SUN STAR PRIMA PRIMA BOGOR",
   },
 
   {
-    image: "/assets/PartnershipLogo/Bogor.png",
+    image: "/PartnershipLogo/BOGOR.png",
     name: "DINAS KOMINFO KABUPATEN BOGOR",
   },
 
   {
-    image: "/assets/PartnershipLogo/TELKOM.png",
+    image: "/PartnershipLogo/TELKOM.png",
     name: "MANAGER SS dan GS PT. TELKOM",
   },
 
   {
-    image: "/assets/PartnershipLogo/DPRD.png",
+    image: "/PartnershipLogo/DPRD.png",
     name: "SEKRETARIS DPRD KAB. BOGOR",
   },
 
   {
-    image: "/assets/PartnershipLogo/BRI.png",
+    image: "/PartnershipLogo/BRI.png",
     name: "BANK BRI KC CIBINONG",
   },
 
   {
-    image: "/assets/PartnershipLogo/DEPTECH.png",
+    image: "/PartnershipLogo/DEPTECH.png",
     name: "PT. DEPTECH DIGITAL INDONESIA",
   },
 
   {
-    image: "/assets/PartnershipLogo/SALAM.png",
+    image: "/PartnershipLogo/SALAM.png",
     name: "PT. AMA SALAM INDONESIA",
   },
 
   {
-    image: "/assets/PartnershipLogo/VIRUS.png",
+    image: "/PartnershipLogo/VIRUS.png",
     name: "PT. VIRUS MEDIA INVESTERA",
   },
 
   {
-    image: "/assets/PartnershipLogo/MARVATEL.png",
+    image: "/PartnershipLogo/MARVATEL.png",
     name: "PT. MARVA CIPTA INDONESIA",
   },
 
   {
-    image: "/assets/PartnershipLogo/TNI.png",
+    image: "/PartnershipLogo/TNI.png",
     name: "PUSINFOLAHTA TNI",
   },
 
   {
-    image: "/assets/PartnershipLogo/ALUS.png",
+    image: "/PartnershipLogo/ALUS.png",
     name: "PT. ASTECH ALUS TECHNOLOGY",
   },
 
   {
-    image: "/assets/PartnershipLogo/TITIAN.png",
+    image: "/PartnershipLogo/TITIAN.png",
     name: "PT. LINGKAR SEMBILAN TITAN MEDIA",
   },
 
   {
-    image: "/assets/PartnershipLogo/WANTEK.png",
+    image: "/PartnershipLogo/WANTEK.png",
     name: "PT. WAN TEKNOLOGI INTERNASIONAL",
   },
 
   {
-    image: "/assets/PartnershipLogo/UI.png",
+    image: "/PartnershipLogo/UI.png",
     name: "FAKULTAS PSIKOLOGI UNIVERSITAS INDONESIA",
   },
 
   {
-    image: "/assets/PartnershipLogo/GILLAND.png",
+    image: "/PartnershipLogo/GILLAND.png",
     name: "PT. GILLAND GANESHA",
   },
 
   {
-    image: "/assets/PartnershipLogo/BIONIC.png",
+    image: "/PartnershipLogo/BIONIC.png",
     name: "PT. BIONIC TEKNOLOGI INDONESIA",
   },
 ];
