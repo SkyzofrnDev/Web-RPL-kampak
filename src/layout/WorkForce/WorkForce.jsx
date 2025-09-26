@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { CardWorkForce } from "../../components/Index";
+import { CardWorkForce, SkeletonWorkForce } from "../../components/Index";
 
 const WorkForce = () => {
   const [data, setData] = useState([]);
@@ -60,20 +60,7 @@ const WorkForce = () => {
 
   // Show loading state
   if (loading) {
-    return (
-      <div>
-        <div className="bg-[#272727] pt-20">
-          <div className="text-center font-bold text-white text-3xl lg:text-4xl mb-28">
-            <p>TENAGA KERJA</p>
-            <p>REKAYASA PERANGKAT LUNAK</p>
-          </div>
-          <div className="text-center py-20">
-            <p className="text-white text-lg">Loading data tenaga kerja...</p>
-          </div>
-        </div>
-        <img src="/Svg/Anim2LD.svg" alt="" srcset="" />
-      </div>
-    );
+    return <SkeletonWorkForce />;
   }
 
   // Show error state

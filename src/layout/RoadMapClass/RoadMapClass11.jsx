@@ -2,16 +2,20 @@ import React from "react";
 import { RoadMap } from "../../components/Index";
 const journeyData = [
   {
-    image: "/path/to/image1.svg",
-    desc: "Description for the first journey entry.",
+    image: "/cover/game.png",
+    desc: "Dapat memahami Konsep pembuatan game dasar dan dapat membuat Game menggunakan Engine Website atau Game Engine",
   },
   {
-    image: "/path/to/image2.svg",
-    desc: "Description for the second journey entry.",
+    image: "/cover/html.png",
+    desc: "Dapat menguasai pemrograman dasar berbasis Website menggunakan HTML, CSS, Dan JavaScript serta dapat mengimplementasikan pembuatan Website secara interaktif.",
   },
   {
-    image: "/path/to/image3.svg",
-    desc: "Description for the third journey entry.",
+    image: "/cover/mysql.png",
+    desc: "Dapat memahami dan menggunakan Database MySQL, Serta dapat memahami konsep Query dasar (DML, DDL, DCL).",
+  },
+  {
+    image: "/cover/c.jpg",
+    desc: "Dapat memahami pemrograman berorientasi objek menggunakan Java serta membuat aplikasi desktop sederhana menggunakan C# WInForm.",
   },
 ];
 const RoadMapClass11 = () => {

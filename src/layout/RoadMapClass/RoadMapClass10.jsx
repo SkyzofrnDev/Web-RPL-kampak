@@ -2,16 +2,16 @@ import React from "react";
 import { RoadMap } from "../../components/Index";
 const journeyData = [
   {
-    image: "/path/to/image1.svg",
-    desc: "Description for the first journey entry.",
+    image: "/cover/pemrograman_dasar.jpg",
+    desc: "Dapat memahami konsep pemrograman dasar seperti Algoritma dasar, Usecase, Flowchart, DLL.",
   },
   {
-    image: "/path/to/image2.svg",
-    desc: "Description for the second journey entry.",
+    image: "/cover/java.png",
+    desc: "Dapat memahami pemrograman berorientasi objek menggunakan Java serta membuat aplikasi desktop sederhana menggunakan Java JFrame",
   },
   {
-    image: "/path/to/image3.svg",
-    desc: "Description for the third journey entry.",
+    image: "/cover/office.jpg ",
+    desc: "Dapat menguasai Aplikasi Office dasar seperti Word, Excel, Powerpoint dan dapat memahami konsep jaringan dasar ",
   },
 ];
 

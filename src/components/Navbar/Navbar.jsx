@@ -243,7 +243,7 @@ const Navbar = () => {
                 }`}
                 onClick={() => scrollToSection("achivments")}
               >
-                ACHIVMENTS
+                ACHIEVMENTS
               </li>
               <li
                 className={`cursor-pointer ${
@@ -294,7 +294,7 @@ const Navbar = () => {
         <div className="xl:hidden bg-black/50 w-full py-3  px-4 backdrop-blur-[4px] flex items-center justify-between ">
           <div className="flex text-white items-center">
             <img
-              src="/assets/logo-rpl.png"
+              src="/Assets/LogoRPL.png"
               alt="Logo RPL"
               className="w-10 md:w-16"
             />

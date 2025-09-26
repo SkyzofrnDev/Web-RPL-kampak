@@ -11,17 +11,17 @@ const RoadMap = ({ data }) => {
   }, []);
   return (
     <div className="flex  flex-col items-center w-full justify-center bg-[#272727] text-white py-12 select-none">
-      <div className="w-full px-56 mt-20">
+      <div className="w-full px-20 lg:px-56 mt-20">
         {data.map((entry, index) => (
           <div
             key={index}
-            className={`flex mt-10 items-stretch justify-between ${
+            className={` lg:flex mt-10 items-stretch justify-between ${
               index % 2 === 0 ? "flex-row" : "flex-row-reverse"
             }`}
           >
             <div
               data-aos="fade-up"  
-              className="w-1/3 flex items-center justify-center px-4"
+              className="lg:w-1/3 w-full bg-cover flex items-center justify-center px-4"
             >
               <img
                 className="w-full h-[280px] object-cover rounded-lg"
@@ -31,7 +31,7 @@ const RoadMap = ({ data }) => {
             </div>
             <div
               data-aos="fade-up"
-              className="w-1/3 flex flex-col items-center  px-4"
+              className="hidden lg:flex w-1/3 flex-col items-center  px-4"
             >
               <div className="p-3 rounded-full bg-white"></div>
               {index !== data.length - 1 && (
@@ -40,9 +40,9 @@ const RoadMap = ({ data }) => {
             </div>
             <div
               data-aos="fade-up"
-              className="w-1/3 flex   px-4 h-[280px]"
+              className="w-full lg:w-1/3 flex   px-4 lg:h-[280px]"
             >
-              <p className="radio text-xl max-w-md">{entry.desc}</p>
+              <p className="radio text-xl lg:max-w-md text-center lg:text-left mt-10 lg:mt-0">{entry.desc}</p>
             </div>
           </div>
         ))}

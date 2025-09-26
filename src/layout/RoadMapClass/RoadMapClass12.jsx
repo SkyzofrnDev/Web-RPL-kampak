@@ -2,16 +2,20 @@ import React from "react";
 import { RoadMap } from "../../components/Index";
 const journeyData = [
   {
-    image: "/path/to/image1.svg",
-    desc: "Description for the first journey entry.",
+    image: "/cover/laravel.png",
+    desc: "Dapat menguasai pemrograman lanjutan berbasis Website menggunakan PHP & Laravel serta dapat mengimplementasikan pembuatan Website secara interaktif & Dinamis.",
   },
   {
-    image: "/path/to/image2.svg",
-    desc: "Description for the second journey entry.",
+    image: "/cover/flutter.png",
+    desc: "Mampu memahami dasar-dasar Flutter serta dapat membuat aplikasi mobile sederhana dengan fungsionalitas yang berjalan baik pada platform Android maupun iOS.",
   },
   {
-    image: "/path/to/image3.svg",
-    desc: "Description for the third journey entry.",
+    image: "/cover/db.jpg",
+    desc: "Memahami penggunaan database lanjutan serta mampu mengimplementasikannya pada berbagai program atau aplikasi, termasuk dalam perancangan, pengelolaan, dan optimasi data.",
+  },
+  {
+    image: "/cover/api.png",
+    desc: "Mampu memahami konsep Restful API serta mengimplementasikannya dalam pengembangan aplikasi berbasis CRUD (Create, Read, Update, Delete) secara efisien dan terstruktur.",
   },
 ];
 const RoadMapClass12 = () => {

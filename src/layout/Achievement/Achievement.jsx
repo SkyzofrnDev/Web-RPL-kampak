@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { CardAchievements } from "../../components/Index";
+import { CardAchievements, SkeletonAchievement } from "../../components/Index";
 
 const Achievement = () => {
   const cardWidth = 400;
@@ -97,20 +97,7 @@ const Achievement = () => {
 
   // Show loading state
   if (loading) {
-    return (
-      <div>
-        <img src="/Svg/Anim1LU.svg" alt="" className="" />
-        <div className="flex flex-col items-center justify-center bg-[#272727] text-white py-12 select-none">
-          <div className="text-center mb-10">
-            <h1 className="text-xl font-medium mb-2">Album Prestasi Siswa</h1>
-            <h2 className="text-3xl font-semibold">Our Achievements</h2>
-          </div>
-          <div className="text-center">
-            <p className="text-lg">Loading achievements...</p>
-          </div>
-        </div>
-      </div>
-    );
+    return <SkeletonAchievement />;
   }
 
   // Show error state

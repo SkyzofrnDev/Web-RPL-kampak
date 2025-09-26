@@ -5,3 +5,7 @@ export { default as ButtonBlack } from "./Button/ButtonBlack";
 export { default as CardWorkForce } from "./CardSlider/CardWorkForce";  
 export { default as CardAchievements } from "./CardSlider/CardAchievements";  
 export { default as RoadMap } from "./RoadMap/RoadMap";  
+export { default as CardNews } from "./CardSlider/CardNews";
+
+// Skeleton Components
+export * from "./Skeleton";  
