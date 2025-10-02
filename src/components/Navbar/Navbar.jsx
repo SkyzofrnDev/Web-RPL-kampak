@@ -243,7 +243,7 @@ const Navbar = () => {
                 }`}
                 onClick={() => scrollToSection("achivments")}
               >
-                ACHIEVMENTS
+                ACHIEVEMENTS
               </li>
               <li
                 className={`cursor-pointer ${
